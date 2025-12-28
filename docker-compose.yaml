@@ -1,0 +1,56 @@
+services:
+  neo4j:
+    build:
+      context: ./Hybrid-RAG/neo4j
+      dockerfile: Dockerfile
+    container_name: neo4jj
+    environment:
+        NEO4J_AUTH: "neo4j/ps_neo4jj"
+        NEO4J_apoc_export_file_enabled: "true"
+        NEO4J_apoc_import_file_enabled: "true"
+        NEO4J_apoc_import_file_use__neo4j__config: "true"
+        NEO4J_dbms_security_procedures_unrestricted: "apoc.*"
+    ports:
+      - 7474:7474
+      - 7687:7687
+    restart: unless-stopped
+    depends_on:
+     - ollama
+    volumes:
+      - ./Hybrid-Rag/neo4j/data:/data
+      - ./Hybrid-Rag/neo4j/logs:/logs
+      - ./Hybrid-Rag/neo4j/plugins:/plugins
+      - ./Hybrid-Rag/neo4j/config:/config
+    networks:
+      - hybrid-net
+    
+  hybrid-rag:
+    build:
+      context: ./Hybrid-Rag
+      dockerfile: Dockerfile
+    container_name: hybrid-rag
+    ports:
+      - 8008:8000
+    depends_on:
+     - neo4j
+    networks:
+      - hybrid-net
+
+  ollama:
+    image: ollama/ollama:latest
+    volumes:
+      - ./ollama:/root/.ollama
+    container_name: olllama
+    ports:
+      - 30001:11434
+    pull_policy: always
+    tty: true
+    restart: unless-stopped
+    networks:
+      - hybrid-net
+
+networks:
+  hybrid-net:
+    external:
+      false
+      
