@@ -42,7 +42,7 @@ services:
       - ./ollama:/root/.ollama
     container_name: olllama
     ports:
-      - 30001:11434
+      - 30000:11434
     pull_policy: always
     tty: true
     restart: unless-stopped
