@@ -60,9 +60,9 @@ RAG-Vergleich-main/
 
 
 
-## Environment Variables
+# Environment Variables
 
-# Neo4j (for Graph-RAG)
+## Neo4j (for Graph-RAG)
 NEO4J_AUTH=neo4j/ps_neo4jj
 NEO4J_URI=bolt://localhost:7687
 
@@ -71,8 +71,8 @@ NEO4J_URI=bolt://localhost:7687
     - Who is Isabel?
     - Describe the structure of the Moreno family: who belongs to each generation, how they  are related to each other, and where each nuclear family lives.
 
-## Anleitung
+## Instructions
     1. Make sure Docker is running 
-    2. Check port 7474, 7687, 8008 and 30000 is accessible
+    2. Check port 7474, 7687, 8008 and 11434 is accessible
     3. Ensure Ollama is running: docker-compose ps ollama
     4. Ensure the model llama3.1:8b is installed in Ollama
