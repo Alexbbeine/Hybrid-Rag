@@ -40,7 +40,8 @@ docker-compose up --build
 
 ## 🏗️ File Structure
 
-RAG-Vergleich-main/
+```text
+Hybrid-RAG/
 ├── docker-compose.yaml              # Services orchestration
 └── Hybrid-RAG/
     ├── config/
@@ -57,6 +58,7 @@ RAG-Vergleich-main/
         ├── rag_chain.py
         ├── retriever.py
         └── schemas.py
+
 
 
 
