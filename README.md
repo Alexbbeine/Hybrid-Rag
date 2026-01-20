@@ -6,7 +6,20 @@ The goal is to integrate semantic search with structured knowledge in order to g
 **Neo4j** is used as the underlying knowledge database, while the entire application is **containerized using Docker**.  
 For text generation, a locally hosted LLM is used via **Ollama (`llama3.1:8b`)**.
 
----
+
+## Quick Start
+
+### Using Docker Compose
+```bash
+# Start all services
+docker-compose up --build
+
+# Services will be available at:
+# - neo4j: http://localhost:7474
+# - Ollama: http://localhost:11434
+```
+
+
 
 ## ✨ Features
 
